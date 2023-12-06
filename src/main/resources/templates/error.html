@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Java Springboot HTMX</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/htmx/1.9.9/htmx.min.js"></script>
+</head>
+<body>
+<h1>Not Found</h1>
+<div id="another-div"></div>
+<button
+        hx-get="/list"
+        hx-swap="innerHTML"
+        hx-target="#another-div"
+>
+    Get Data
+</button>
+</body>
+</html>

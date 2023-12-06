@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Java Springboot HTMX</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/htmx/1.9.9/htmx.min.js"></script>
+    <link rel="stylesheet" href="css/tyles.css" />
+</head>
+<body>
+    <h1 th:text="${title}"></h1>
+    <section th:replace="~{${template}}"></section>
+    <div id="another-div">
+        <img
+            id="spinner"
+            class="my-indicator"
+            src="img/spinner.gif"
+            width="80"
+        />
+    </div>
+    <button
+        class="icon"
+        hx-get="/list"
+        hx-swap="innerHTML"
+        hx-target="#another-div"
+        hx-indicator="#spinner"
+    >
+        Get Data
+
+    </button>
+
+</body>
+</html>
