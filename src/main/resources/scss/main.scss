@@ -1,0 +1,19 @@
+@import "../templates/components/list/list";
+
+html, body {
+  font-family: Arial, Verdana, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+.my-indicator {
+  display: none;
+}
+
+.htmx-request .my-indicator {
+  display: inline;
+}
+
+.htmx-request.my-indicator {
+  display: inline;
+}
