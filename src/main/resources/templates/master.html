@@ -7,25 +7,28 @@
   <link rel="stylesheet" href="css/main.css"/>
 </head>
 <body>
-<h1 th:text="${title}"></h1>
-<section th:replace="~{${template}}"></section>
-<div id="anotherDiv">
-  <img
-      id="spinner"
-      class="my-indicator"
-      src="img/spinner.gif"
-      width="80"
-  />
+<div class="container">
+  <h1 th:text="${title}"></h1>
+  <section th:replace="~{${template}}"></section>
+  <div id="anotherDiv">
+    <img
+        id="spinner"
+        class="my-indicator"
+        src="img/spinner.gif"
+        width="80"
+    />
+  </div>
+  <button
+      class="icon"
+      hx-get="/list"
+      hx-swap="innerHTML"
+      hx-target="#anotherDiv"
+      hx-indicator="#spinner"
+  >
+    Get Data
+  </button>
 </div>
-<button
-    class="icon"
-    hx-get="/list"
-    hx-swap="innerHTML"
-    hx-target="#anotherDiv"
-    hx-indicator="#spinner"
->
-  Get Data
-</button>
+
 
 </body>
 </html>
