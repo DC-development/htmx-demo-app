@@ -3,13 +3,25 @@
 <head>
   <title th:text="${title}"></title>
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <!-- jsDelivr :: Sortable :: Latest (https://www.jsdelivr.com/package/npm/sortablejs) -->
+  <script src="https://cdn.jsdelivr.net/npm/sortablejs@latest/Sortable.min.js"></script>
   <script src="js/htmx.min.js"></script>
+  <script src="js/sortable.js"></script>
+
   <link rel="stylesheet" href="css/main.css"/>
 </head>
 <body>
 <div class="container">
   <h1 th:text="${title}"></h1>
-  <!-- <section th:replace="~{${template}}"></section> -->
+  <form class="sortable" hx-post="/items" hx-trigger="end">
+    <div class="htmx-indicator">Updating...</div>
+    <div><input type='hidden' name='item' value='1'/>1</div>
+    <div><input type='hidden' name='item' value='2'/>2</div>
+    <div><input type='hidden' name='item' value='3'/>3</div>
+    <div><input type='hidden' name='item' value='4'/>4</div>
+    <div><input type='hidden' name='item' value='5'/>5</div>
+  </form>
+  <section th:replace="~{${template}}"></section>
   <div id="anotherDiv">
     <img
         id="spinner"
@@ -28,7 +40,5 @@
     Get Data
   </button>
 </div>
-
-
 </body>
 </html>
