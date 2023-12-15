@@ -1,0 +1,16 @@
+version: "3.8"
+
+name: htmx-app-database
+
+services:
+  workflow-database:
+    container_name: htmx-app-database
+    image: postgres
+    build:
+      context: .
+      target: htmx-app-postgres-database
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: dcdev
+      POSTGRES_PASSWORD: mysecret
