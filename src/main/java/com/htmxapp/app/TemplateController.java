@@ -1,5 +1,9 @@
 package com.htmxapp.app;
 
+import ch.qos.logback.classic.encoder.JsonEncoder;
+import com.fasterxml.jackson.annotation.JsonAlias;
+import org.apache.tomcat.util.buf.Utf8Encoder;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -12,6 +16,8 @@ import static org.thymeleaf.util.StringUtils.split;
 
 @Controller
 public class TemplateController {
+  @Autowired
+  private ListService listService;
 
   @GetMapping("/")
   private String getTemplate(Model model) {
@@ -25,16 +31,8 @@ public class TemplateController {
   @GetMapping("/list")
   private String getList(Model model) {
     String[] factorsOf24 = {"Lisa", "Bine", "Dummy", "Puma", "Pumukkel", "Dada", "Gugu"};
-
-    ListItem myitem1 = new ListItem("my title", 1);
-    ListItem myitem2 = new ListItem("my title", 2);
-    ListItem myitem3 = new ListItem("my title", 3);
-    ListItem myitem4 = new ListItem("my title", 4);
-
-    ListItem[] arrayOfItems = {myitem1, myitem2, myitem3, myitem4};
-
     model.addAttribute("items", factorsOf24);
-    model.addAttribute("arrayOfItems", arrayOfItems);
+
     try {
       Thread.sleep(1000);
     } catch (InterruptedException e) {
@@ -48,5 +46,11 @@ public class TemplateController {
     String[] itemStrings = split(list, "&");
     model.addAttribute("items", itemStrings);
     return "/components/list/list";
+  }
+  @PostMapping("/item/new")
+  public String createItem(Model model,@RequestBody ListItem item) {
+    listService.createListItem(item);
+    model.addAttribute("item", item);
+    return "/components/list/item/item";
   }
 }
