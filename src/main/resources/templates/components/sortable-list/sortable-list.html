@@ -1,5 +1,6 @@
 <ul>
   <li class="row even-row-color" th:each="item: ${items}">
-    <span class="col-12" th:text="${item}"></span>
+    <span class="col-12" th:text="${item.name}"></span>
+    <span class="col-12" th:text="${item.email}"></span>
   </li>
 </ul>

@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 
 import javax.lang.model.element.ModuleElement;
 
+import java.util.List;
+
 import static org.thymeleaf.util.StringUtils.split;
 
 @Controller
@@ -21,24 +23,24 @@ public class TemplateController {
 
   @GetMapping("/")
   private String getTemplate(Model model) {
-    String[] factorsOf24 = {"1", "2", "3", "4", "6", "12", "24", "25"};
-    model.addAttribute("items", factorsOf24);
+
+    List<ListItem> arrayOfItems = this.listService.getAllListItems();
+    model.addAttribute("items", arrayOfItems);
     model.addAttribute("title", "Checking out HTMX");
-    model.addAttribute("template", "/components/list/list");
+    model.addAttribute("template", "/components/sortable-list/sortable-list");
     return "master";
   }
 
   @GetMapping("/list")
   private String getList(Model model) {
-    String[] factorsOf24 = {"Lisa", "Bine", "Dummy", "Puma", "Pumukkel", "Dada", "Gugu"};
-    model.addAttribute("items", factorsOf24);
-
+    List<ListItem> arrayOfItems = this.listService.getAllListItems();
+    model.addAttribute("items", arrayOfItems);
     try {
       Thread.sleep(1000);
     } catch (InterruptedException e) {
       e.printStackTrace();
     }
-    return "/components/list/list";
+    return "/components/sortable-list/sortable-list";
   }
 
   @PostMapping("/items")
@@ -47,6 +49,7 @@ public class TemplateController {
     model.addAttribute("items", itemStrings);
     return "/components/list/list";
   }
+
   @PostMapping("/item/new")
   public String createItem(Model model,@RequestBody ListItem item) {
     listService.createListItem(item);
