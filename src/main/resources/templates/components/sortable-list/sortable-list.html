@@ -1,6 +1,6 @@
-<ul>
-  <li class="row even-row-color" th:each="item: ${items}">
-    <span class="col-12" th:text="${item.name}"></span>
-    <span class="col-12" th:text="${item.email}"></span>
-  </li>
-</ul>
+
+  <div class="li row even-row-color" th:each="item: ${items}">
+    <span class="col-12" th:text="Item-+ ${item}"></span>
+    <span class="col-12" th:text="Id-+ ${item}"></span>
+    <input type='hidden' name='item' th:value="${item}" />
+  </div>

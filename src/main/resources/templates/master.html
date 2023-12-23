@@ -14,7 +14,12 @@
 <body>
 <div class="container">
   <h1 th:text="${title}"></h1>
-  <form class="sortable" hx-post="/items" hx-trigger="end">
+  <form
+      class="sortable"
+      hx-ext='json-enc'
+      hx-post="/items"
+      hx-trigger="end"
+  >
     <div class="htmx-indicator">Updating...</div>
     <div><input type='hidden' name='item' value='1'/>1</div>
     <div><input type='hidden' name='item' value='2'/>2</div>
@@ -22,26 +27,9 @@
     <div><input type='hidden' name='item' value='4'/>4</div>
     <div><input type='hidden' name='item' value='5'/>5</div>
   </form>
+  <!--
   <section th:replace="~{${template}}"></section>
-  <form
-      hx-post="/item/new"
-      hx-ext='json-enc'
-      th:trigger="submit"
-  >
-    <input
-        name="name"
-        type="text"
-        required
-    />
-    <input
-        name="email"
-        type="email"
-        required
-    />
-    <button
-      type="submit"
-    >Send</button>
-  </form>
+-->
   <div id="anotherDiv">
     <img
         id="spinner"
@@ -59,6 +47,8 @@
   >
     Get Data
   </button>
+  <section th:replace="components/item/item-form"></section>
+
 </div>
 </body>
 </html>
