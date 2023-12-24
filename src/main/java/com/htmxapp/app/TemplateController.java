@@ -42,17 +42,18 @@ public class TemplateController {
     } catch (InterruptedException e) {
       e.printStackTrace();
     }
-    return "/components/sortable-list/sortable-list";
+    return "/components/sortable-list/list";
   }
-
   @PostMapping("/items")
   private String postItems(Model model, @RequestBody String list) {
 
-    JSONObject jsonObject = (JSONObject) JSONValue.parse(list);
-    JSONArray data = (JSONArray) jsonObject.get("item");
-    //String[] items = (String) data.get("item");
-    System.out.println("items= " + data);
-    model.addAttribute("items", data);
+    //JSONObject jsonObject = (JSONObject) JSONValue.parse(list);
+    JSONArray arrayOfIds = this.extractArray("item", list);
+    for(int i = 0; i < arrayOfIds.size(); i++) {
+      System.out.println(arrayOfIds.get(i));
+    }
+    model.addAttribute("items", arrayOfIds);
+
     return "/components/sortable-list/sortable-list";
   }
   @PostMapping("/item/new")
@@ -60,6 +61,10 @@ public class TemplateController {
     listService.createListItem(item);
     model.addAttribute("item", item);
     return "/components/item/item-form";
+  }
+  private JSONArray extractArray(String name, String jsonStr) {
+    JSONObject jsonObject = (JSONObject) JSONValue.parse(jsonStr);
+    return (JSONArray) jsonObject.get(name);
   }
 }
 

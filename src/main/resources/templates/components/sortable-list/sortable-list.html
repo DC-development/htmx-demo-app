@@ -1,6 +1,6 @@
-
-  <div class="li row even-row-color" th:each="item: ${items}">
-    <span class="col-12" th:text="Item-+ ${item}"></span>
-    <span class="col-12" th:text="Id-+ ${item}"></span>
-    <input type='hidden' name='item' th:value="${item}" />
-  </div>
+<div class="htmx-indicator">Updating...</div>
+<div class="sortable-list__item row even-row-color" th:each="item: ${items}">
+  <span class="col-12" th:text="Item-+ ${item}"></span>
+  <span class="col-12" th:text="Id-+ ${item}"></span>
+  <input type='hidden' name='item' th:value="${item}" />
+</div>

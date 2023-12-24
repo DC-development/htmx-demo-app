@@ -1,13 +1,13 @@
-<div class="htmx-indicator">Updating...</div>
+
 <div
     class="row"
-    th:each="bu: ${items}"
+    th:each="item: ${items}"
 >
   <input
       type="hidden"
       name="item"
-      th:value="${bu}"
+      th:value="${item}"
   />
-  <span th:text="${bu}">
+  <span th:text="${item.name}">
   </span>
 </div>

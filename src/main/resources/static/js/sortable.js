@@ -4,7 +4,7 @@ htmx.onLoad(function (content) {
         var sortable = sortables[i];
         var sortableInstance = new Sortable(sortable, {
             animation: 150,
-            ghostClass: 'blue-background-class',
+            ghostClass: 'sortable-list__item--ghost',
 
             // Make the `.htmx-indicator` unsortable
             filter: ".htmx-indicator",
