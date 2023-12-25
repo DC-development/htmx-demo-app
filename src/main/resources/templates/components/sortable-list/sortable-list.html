@@ -1,6 +1,22 @@
-<div class="htmx-indicator">Updating...</div>
-<div class="sortable-list__item row even-row-color" th:each="item: ${items}">
-  <span class="col-12" th:text="Item-+ ${item}"></span>
-  <span class="col-12" th:text="Id-+ ${item}"></span>
-  <input type='hidden' name='item' th:value="${item}" />
+
+
+  <div id="busyLoadingList" class="my-indicator busy-default">
+    <div class="busy-backdrop row">
+      <img src="img/spinner.gif"/>
+    </div>
+  </div>
+<div
+    th:each="item: ${items}"
+    class="sortable-list__item row even-row-color"
+>
+  <span class="col-4" th:text="${item.name}"></span>
+  <span class="col-5" th:text="${item.email}"></span>
+  <span class="col-1"><button>delete</button></span>
+  <span class="col-1"><button>edit</button></span>
+
+  <input
+      th:value="${item.getId()}"
+      type='hidden'
+      name='item'
+  />
 </div>

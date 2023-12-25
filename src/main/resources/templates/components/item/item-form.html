@@ -1,19 +1,27 @@
 <form
     hx-post="/item/new"
     hx-ext='json-enc'
-    th:trigger="submit"
+    th:trigger="end"
+    hx-indicator="#busySaving"
+    hx-swap="outerHTML"
 >
-  <input
-      name="name"
-      type="text"
-      required
-  />
-  <input
-      name="email"
-      type="email"
-      required
-  />
-  <button
-      type="submit"
-  >Send</button>
+<div id="busySaving" class="my-indicator busy-default">
+  <div class="busy-backdrop">
+    <img src="img/spinner.gif"/>
+  </div>
+</div>
+    <input
+        name="name"
+        type="text"
+        required
+    />
+    <input
+        name="email"
+        type="email"
+        required
+    />
+    <button
+        type="submit"
+    >Send</button>
+
 </form>

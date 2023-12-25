@@ -1,6 +1,8 @@
 package com.htmxapp.app;
 
+import org.hibernate.query.Order;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -18,7 +20,7 @@ public class ListService {
 
   // Get all items
   public List<ListItem> getAllListItems() {
-    return ListRepository.findAll();
+    return ListRepository.findAll(Sort.by("ordinary"));
   }
 
   // Get item by ID
@@ -33,6 +35,7 @@ public class ListService {
       ListItem existingListItem = item.get();
       existingListItem.setName(itemDetails.getName());
       existingListItem.setEmail(itemDetails.getEmail());
+      existingListItem.setOrdinary(itemDetails.getOrdinary());
       return ListRepository.save(existingListItem);
     }
     return null;

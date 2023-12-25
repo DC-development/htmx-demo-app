@@ -5,12 +5,32 @@
 
 .my-indicator {
   display: none;
+  &.busy-default {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    & .busy-backdrop {
+      position: absolute;
+      background-color: #333447;
+      width: 100%;
+      height: 100%;
+      opacity: 0.75;
+      img {
+        max-width: 100%;
+      }
+    }
+  }
 }
 
 .htmx-request .my-indicator {
   display: inline;
+  position: absolute;
+  z-index: 1000;
 }
 
 .htmx-request.my-indicator {
   display: inline;
+  position: absolute;
+  z-index: 1000;
 }

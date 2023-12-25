@@ -14,29 +14,24 @@
 <body>
 <div class="container">
   <h1 th:text="${title}"></h1>
+  <section th:replace="components/item/item-form"></section>
   <form
       class="sortable sortable-list"
       hx-ext='json-enc'
       hx-post="/items"
       hx-trigger="end"
   >
-    <div class="htmx-indicator">Updating...</div>
-    <div class="item"><input type='hidden' name='item' value='1'/>1</div>
-    <div class="item"><input type='hidden' name='item' value='2'/>2</div>
-    <div class="item"><input type='hidden' name='item' value='3'/>3</div>
-    <div class="item"><input type='hidden' name='item' value='4'/>4</div>
-    <div class="item"><input type='hidden' name='item' value='5'/>5</div>
+      <section th:replace="~{${template}}"></section>
   </form>
-  <!--
-  <section th:replace="~{${template}}"></section>
--->
+  <div
+      hx-trigger="new-item-trigger from:body"
+      hx-get="/items"
+      hx-target=".sortable.sortable-list"
+      hx-swap="innerHTML"
+      hx-indicator="#busyLoadingList"
+  ></div>
   <div id="anotherDiv">
-    <img
-        id="spinner"
-        class="my-indicator"
-        src="img/spinner.gif"
-        width="80"
-    />
+
   </div>
   <button
       class="icon"
@@ -46,8 +41,14 @@
       hx-indicator="#spinner"
   >
     Get Data
+    <img
+        id="spinner"
+        class="my-indicator"
+        src="img/spinner.gif"
+        width="40"
+    />
   </button>
-  <section th:replace="components/item/item-form"></section>
+
 
 </div>
 </body>

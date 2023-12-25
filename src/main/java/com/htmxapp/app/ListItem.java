@@ -11,6 +11,7 @@ public class ListItem {
 
   private String name;
   private String email;
+  private int ordinary;
 
   // Constructors, Getters, and Setters
   public Long getId() {
@@ -35,6 +36,14 @@ public class ListItem {
 
   public void setEmail(String email) {
     this.email = email;
+  }
+
+  public int getOrdinary() {
+    return ordinary;
+  }
+
+  public void setOrdinary(int ordinary) {
+    this.ordinary = ordinary;
   }
 }
 
