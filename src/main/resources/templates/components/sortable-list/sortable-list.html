@@ -2,7 +2,17 @@
     th:each="item: ${items}"
     class="sortable-list__item row even-row-color"
 >
-  <span class="col-4" th:text="${item.name}"></span>
+  <div>
+  <input
+      class="col-4"
+      th:value="${item.name}"
+      th:attr="
+        hx-post='/item/update/'+ ${item.id},
+        name='name-'+ ${item.id}
+      "
+      hx-trigger="keyup"
+      type="text"
+  />
   <span class="col-5" th:text="${item.email}"></span>
   <span class="col-1"><button>delete</button></span>
   <span class="col-1"><button>edit</button></span>
@@ -12,6 +22,7 @@
       type='hidden'
       name='item'
   />
+  </div>
 </div>
 
 <div id="busyLoadingList" class="my-indicator busy-default">

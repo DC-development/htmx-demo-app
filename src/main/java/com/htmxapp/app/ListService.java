@@ -34,8 +34,12 @@ public class ListService {
     if (item.isPresent()) {
       ListItem existingListItem = item.get();
       existingListItem.setName(itemDetails.getName());
-      existingListItem.setEmail(itemDetails.getEmail());
-      existingListItem.setOrdinary(itemDetails.getOrdinary());
+      if(itemDetails.getEmail() != null) {
+        existingListItem.setEmail(itemDetails.getEmail());
+      };
+      if(itemDetails.getOrdinary() >= 0) {
+        existingListItem.setOrdinary(itemDetails.getOrdinary());
+      }
       return ListRepository.save(existingListItem);
     }
     return null;

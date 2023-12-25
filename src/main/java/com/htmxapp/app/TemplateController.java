@@ -1,27 +1,15 @@
 package com.htmxapp.app;
 
-import ch.qos.logback.classic.encoder.JsonEncoder;
-import com.fasterxml.jackson.annotation.JsonAlias;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.sun.tools.jconsole.JConsolePlugin;
 import jakarta.servlet.http.HttpServletResponse;
 import net.minidev.json.JSONArray;
 import net.minidev.json.JSONObject;
 import net.minidev.json.JSONValue;
-import org.apache.tomcat.util.buf.Utf8Encoder;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import javax.lang.model.element.ModuleElement;
-
 import java.util.List;
-import java.util.Map;
 import java.util.Optional;
-import java.util.function.ToLongFunction;
-
-import static org.thymeleaf.util.StringUtils.split;
 
 @Controller
 public class TemplateController {
@@ -103,6 +91,21 @@ public class TemplateController {
       e.printStackTrace();
     }*/
     return "/components/item/item-form";
+  }
+  @PostMapping("/item/update/{id}")
+  public void updateItem(Model model, @RequestBody String list, @PathVariable int id) {
+    System.out.println(list);
+    JSONObject jsonObject = (JSONObject) JSONValue.parse(list);
+    String newName = (String) jsonObject.get("name-"+id);
+    System.out.println(newName);
+    ListItem updateItem = new ListItem();
+    updateItem.setName(newName);
+    this.listService.updateListItem((long) id, updateItem);
+    /* try {
+      Thread.sleep(1000);
+    } catch (InterruptedException e) {
+      e.printStackTrace();
+    }*/
   }
   private JSONArray extractArray(String jsonKeyString, String jsonStr) {
     JSONObject jsonObject = (JSONObject) JSONValue.parse(jsonStr);
