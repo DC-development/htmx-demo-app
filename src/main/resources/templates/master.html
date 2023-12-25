@@ -1,55 +1,50 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <base href="http://localhost:8080">
   <title th:text="${title}"></title>
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <meta name="root">
   <!-- jsDelivr :: Sortable :: Latest (https://www.jsdelivr.com/package/npm/sortablejs) -->
   <script src="https://cdn.jsdelivr.net/npm/sortablejs@latest/Sortable.min.js"></script>
   <script src="js/htmx.min.js"></script>
   <script src="js/sortable.js"></script>
   <script src="https://unpkg.com/htmx.org/dist/ext/json-enc.js"></script>
-
   <link rel="stylesheet" href="css/main.css"/>
 </head>
 <body>
-<div class="fx-relative container">
-  <h1 th:text="${title}"></h1>
-  <section th:replace="components/item/item-form"></section>
-  <form
-      class="sortable sortable-list fx-relative"
-      hx-ext='json-enc'
-      hx-post="/items"
-      hx-trigger="end"
-  >
-      <section th:replace="~{${template}}"></section>
-  </form>
+<div class="container">
+  <header class="row">
+    <div class="col-6">
+      <h1 th:text="${title}"></h1>
+    </div>
+    <div class="col-6">header</div>
+  </header>
+  <div class="row">
+    <div class="col-12">
+      <section th:replace="components/item/item-form"></section>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12">
+      <form
+          class="sortable sortable-list fx-relative"
+          hx-ext='json-enc'
+          hx-post="/items"
+          hx-trigger="end"
+      >
+        <section th:replace="~{${template}}"></section>
+      </form>
+    </div>
+  </div>
   <div
+      class="row"
       hx-trigger="new-item-trigger from:body"
       hx-get="/items"
       hx-target=".sortable.sortable-list"
       hx-swap="innerHTML"
       hx-indicator="#busyLoadingList"
   ></div>
-  <div id="anotherDiv">
-
-  </div>
-  <button
-      class="icon"
-      hx-get="/list"
-      hx-swap="innerHTML"
-      hx-target="#anotherDiv"
-      hx-indicator="#spinner"
-  >
-    Get Data
-    <img
-        id="spinner"
-        class="my-indicator"
-        src="img/spinner.gif"
-        width="40"
-    />
-  </button>
-
-
 </div>
 </body>
 </html>

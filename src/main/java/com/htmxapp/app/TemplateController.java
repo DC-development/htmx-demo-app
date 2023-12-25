@@ -53,7 +53,11 @@ public class TemplateController {
     List<ListItem> arrayOfItems = this.listService.getAllListItems();
     model.addAttribute("items", arrayOfItems);
     model.addAttribute("items", arrayOfItems);
-
+    /* try {
+      Thread.sleep(1000);
+    } catch (InterruptedException e) {
+      e.printStackTrace();
+    }*/
     return "/components/sortable-list/sortable-list";
   }
   @PostMapping("/items")
@@ -81,11 +85,11 @@ public class TemplateController {
     List<ListItem> arrayOfItems = this.listService.getAllListItems();
     // Add List to Template model
     model.addAttribute("items", arrayOfItems);
-    try {
+   /* try {
       Thread.sleep(1000);
     } catch (InterruptedException e) {
       e.printStackTrace();
-    }
+    }*/
     return "/components/sortable-list/sortable-list";
   }
   @PostMapping("/item/new")
@@ -93,11 +97,11 @@ public class TemplateController {
     listService.createListItem(item);
     model.addAttribute("item", item);
     response.setHeader("HX-Trigger", "new-item-trigger");
-    try {
+    /* try {
       Thread.sleep(1000);
     } catch (InterruptedException e) {
       e.printStackTrace();
-    }
+    }*/
     return "/components/item/item-form";
   }
   private JSONArray extractArray(String jsonKeyString, String jsonStr) {

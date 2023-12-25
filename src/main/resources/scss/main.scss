@@ -1,24 +1,30 @@
-@import "reset";
-@import "simple-grid";
 @import "../templates/components/sortable-list/list";
 @import "../templates/components/sortable-list/sortable-list";
+@import "reset";
+@import "simple-grid";
+@import "component";
 @import "fx-lib";
 
 .my-indicator {
+
   display: none;
   &.busy-default {
-    position: relative;
+    position: absolute;
+    top:0;
     width: 100%;
     height: 100%;
     overflow: hidden;
     & .busy-backdrop {
       position: absolute;
-      background-color: #333447;
+      background-color: #fdfdfd;
       width: 100%;
       height: 100%;
-      opacity: 0.75;
+      opacity: 0.8;
       img {
-        max-width: 100%;
+        position: absolute;
+        top: calc(50% - 35px);
+        left: calc(50% - 35px);
+        width: 70px;
       }
     }
   }
