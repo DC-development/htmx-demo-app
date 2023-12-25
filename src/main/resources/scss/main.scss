@@ -1,7 +1,8 @@
 @import "reset";
-@import "_simple-grid.scss";
+@import "simple-grid";
 @import "../templates/components/sortable-list/list";
 @import "../templates/components/sortable-list/sortable-list";
+@import "fx-lib";
 
 .my-indicator {
   display: none;
