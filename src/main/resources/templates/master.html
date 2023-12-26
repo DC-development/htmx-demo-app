@@ -4,15 +4,15 @@
   <base href="http://localhost:8080">
   <title th:text="${title}"></title>
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-  <meta name="root">
-  <!-- jsDelivr :: Sortable :: Latest (https://www.jsdelivr.com/package/npm/sortablejs) -->
-
-  <script src="https://cdn.jsdelivr.net/npm/sortablejs@latest/Sortable.min.js"></script>
-  <script src="js/htmx.min.js"></script>
-  <script src="js/sortable.js"></script>
-  <script data-main="js/built/main" src="js/require.js"></script>
-  <script src="https://unpkg.com/htmx.org/dist/ext/json-enc.js"></script>
   <link rel="stylesheet" href="css/main.css"/>
+  <!-- jsDelivr :: Sortable :: Latest (https://www.jsdelivr.com/package/npm/sortablejs) -->
+  <script src="js/libs/htmx.min.js"></script>
+  <script src="js/libs/Sortable.min.js"></script>
+  <script src="js/libs/json-enc.js"></script>
+  <script src="js/sortable.js"></script>
+
+  <script data-main="js/built/main" src="js/libs/require.js"></script>
+
 </head>
 <body>
 <div class="container">
