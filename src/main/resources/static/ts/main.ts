@@ -2,7 +2,7 @@ export function mainFunction(a) {
     alert(a+" du Sack!");
 
 }
-mainFunction('huhu')
+mainFunction('huhuhu')
 export class MyClass {
     constructor() {
     }
