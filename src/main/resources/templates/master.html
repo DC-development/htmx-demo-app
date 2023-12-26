@@ -6,9 +6,11 @@
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
   <meta name="root">
   <!-- jsDelivr :: Sortable :: Latest (https://www.jsdelivr.com/package/npm/sortablejs) -->
+
   <script src="https://cdn.jsdelivr.net/npm/sortablejs@latest/Sortable.min.js"></script>
   <script src="js/htmx.min.js"></script>
   <script src="js/sortable.js"></script>
+  <script data-main="js/built/main" src="https://requirejs.org/docs/release/2.3.6/minified/require.js"></script>
   <script src="https://unpkg.com/htmx.org/dist/ext/json-enc.js"></script>
   <link rel="stylesheet" href="css/main.css"/>
 </head>
@@ -18,7 +20,7 @@
     <div class="col-6">
       <h1 th:text="${title}"></h1>
     </div>
-    <div class="col-6">header</div>
+    <div class="col-6"><div id="de"></div></div>
   </header>
   <div class="row">
     <div class="col-12">
@@ -52,6 +54,7 @@
       hx-swap="innerHTML"
       hx-indicator="#busyLoadingList"
   ></div>
+
 </div>
 </body>
 </html>

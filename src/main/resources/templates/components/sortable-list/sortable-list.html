@@ -1,21 +1,40 @@
+
 <div
     th:each="item: ${items}"
     class="sortable-list__item row even-row-color"
 >
   <div>
-  <input
-      class="col-4"
-      th:value="${item.name}"
-      th:attr="
+
+    <input
+        class="col-4"
+        th:value="${item.name}"
+        th:attr="
         hx-post='/item/update/'+ ${item.id},
         name='name-'+ ${item.id}
       "
-      hx-trigger="keyup"
-      type="text"
-  />
-  <span class="col-5" th:text="${item.email}"></span>
-  <span class="col-1"><button>delete</button></span>
-  <span class="col-1"><button>edit</button></span>
+        hx-trigger="keyup"
+        hx-target="#de"
+        type="text"
+    />
+    <input
+        class="col-4"
+        th:value="${item.email}"
+        th:attr="
+        hx-post='/item/update/'+ ${item.id},
+        name='email-'+ ${item.id}
+      "
+        hx-trigger="keyup"
+        hx-target="#de"
+        type="text"
+    />
+
+  <span class="col-1">
+    <button
+        th:attr="hx-delete='/item/delete/'+ ${item.id}"
+        hx-indicator="#busyLoadingList"
+        hx-target="#de"
+    >delete</button>
+  </span>
 
   <input
       th:value="${item.getId()}"
@@ -30,3 +49,10 @@
     <img width="70" src="img/spinner.gif"/>
   </div>
 </div>
+<div
+    hx-trigger="item-removed-trigger from:body"
+    hx-get="/items"
+    hx-target=".sortable.sortable-list"
+    hx-swap="innerHTML"
+    hx-indicator="#busyLoadingList"
+></div>

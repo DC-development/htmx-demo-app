@@ -20,7 +20,7 @@ public class TemplateController {
   private String getTemplate(Model model) {
     List<ListItem> arrayOfItems = this.listService.getAllListItems();
     model.addAttribute("items", arrayOfItems);
-    model.addAttribute("title", "Checking out HTMX");
+    model.addAttribute("title", "HTMX-App");
     model.addAttribute("template", "/components/sortable-list/sortable-list");
     return "master";
   }
@@ -93,19 +93,24 @@ public class TemplateController {
     return "/components/item/item-form";
   }
   @PostMapping("/item/update/{id}")
-  public void updateItem(Model model, @RequestBody String list, @PathVariable int id) {
-    System.out.println(list);
+  public String updateItem(Model model, @RequestBody String list, @PathVariable int id) {
     JSONObject jsonObject = (JSONObject) JSONValue.parse(list);
     String newName = (String) jsonObject.get("name-"+id);
-    System.out.println(newName);
+    String newEmail = (String) jsonObject.get("email-"+id);
+
     ListItem updateItem = new ListItem();
     updateItem.setName(newName);
+    updateItem.setEmail(newEmail);
     this.listService.updateListItem((long) id, updateItem);
-    /* try {
-      Thread.sleep(1000);
-    } catch (InterruptedException e) {
-      e.printStackTrace();
-    }*/
+
+    updateItem.setId((long) id);
+    model.addAttribute("item", updateItem);
+    return "components/item/item";
+  }
+  @DeleteMapping("/item/delete/{id}")
+  public void deleteItem(HttpServletResponse response, @PathVariable int id) {
+    listService.deleteListItem((long) id);
+    response.setHeader("HX-Trigger", "item-removed-trigger");
   }
   private JSONArray extractArray(String jsonKeyString, String jsonStr) {
     JSONObject jsonObject = (JSONObject) JSONValue.parse(jsonStr);
