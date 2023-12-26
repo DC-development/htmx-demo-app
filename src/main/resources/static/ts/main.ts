@@ -1,8 +1,8 @@
 export function mainFunction(a) {
-    alert(a+"tsfsdusdt");
+    alert(a+" du Sack!");
 
 }
-
+mainFunction('huhu')
 export class MyClass {
     constructor() {
     }
