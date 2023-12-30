@@ -10,8 +10,8 @@
     left: 0;
     &.dropped {
       position: relative;
-      margin-left: -110%;
-      border: 1px solid orange;
+      width: 100%;
+      margin-left: -150%;
       transition: all 250ms ease-in;
     }
     &--ghost {
