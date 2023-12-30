@@ -11,7 +11,7 @@ define("main", ["require", "exports", "other"], function (require, exports, othe
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     const main = () => {
-        const helloString = (0, other_1.other)('Pukkiepooo');
+        const helloString = (0, other_1.other)('Pukksdiepoo');
         console.log(helloString);
     };
     main();

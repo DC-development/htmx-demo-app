@@ -1,14 +1,14 @@
 {
   "compilerOptions": {
-    "incremental": true,
     "target": "ES2015",
     "module": "amd",
     "allowJs": true,
     "sourceMap": false,
     "outFile": "built/main.js",
-    "outDir": "built",
+    "outDir": "built"
   },
   "include": [
-    "**/*.ts"
+    "./**/*.ts"
+
   ]
 }

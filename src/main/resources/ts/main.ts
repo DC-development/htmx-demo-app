@@ -1,7 +1,8 @@
 import {other} from "./other";
 
+
 const main = () => {
-    const helloString: string = other('Pukkiepooo');
+    const helloString: string = other('Pukksdiepoo');
 
     console.log(helloString);
 }
