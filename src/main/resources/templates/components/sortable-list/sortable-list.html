@@ -1,20 +1,20 @@
 
 <div
-    th:each="item: ${items}"
     class="sortable-list__item row even-row-color"
+    th:attr="name='id-'+ ${item.id}"
+    th:each="item: ${items}"
 >
-  <div>
 
     <input
         class="col-4"
-        th:value="${item.name}"
+        type="text"
+        hx-target="#de"
+        hx-trigger="keyup"
         th:attr="
         hx-post='/item/update/'+ ${item.id},
         name='name-'+ ${item.id}
       "
-        hx-trigger="keyup"
-        hx-target="#de"
-        type="text"
+        th:value="${item.name}"
     />
     <input
         class="col-4"
@@ -41,7 +41,7 @@
       type='hidden'
       name='item'
   />
-  </div>
+
 </div>
 
 <div id="busyLoadingList" class="my-indicator busy-default">
