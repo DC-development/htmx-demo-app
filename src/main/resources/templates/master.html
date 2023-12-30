@@ -4,7 +4,7 @@
   <base href="http://localhost:8080">
   <title th:text="${title}"></title>
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-  <link rel="stylesheet" href="css/main.css"/>
+  <link rel="stylesheet" href="static/css/main.css"/>
   <!-- jsDelivr :: Sortable :: Latest (https://www.jsdelivr.com/package/npm/sortablejs) -->
   <script src="js/libs/htmx.min.js"></script>
   <script src="js/libs/Sortable.min.js"></script>
@@ -23,14 +23,13 @@
   </header>
   <div class="row">
     <div class="col-12">
-      <section th:replace="~{components/item/item-form}"></section>
+        <section th:replace="~{components/item/item-form}"></section>
     </div>
   </div>
-  <div class="row">
-    <div class="col-12">
+
       <form
           id="sortableListForm"
-          class="fx-relative"
+          class="fx-relative col-12"
           hx-ext='json-enc'
           hx-post="/items"
           hx-trigger="end"
@@ -45,7 +44,7 @@
         </div>
       </form>
     </div>
-  </div>
+
   <div
       class="row"
       hx-trigger="new-item-trigger from:body"

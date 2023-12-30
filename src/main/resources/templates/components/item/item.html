@@ -1,12 +1,50 @@
-<h3>Item</h3>
 <div
-    class="row"
+    class="sortable-list__item row dropped"
+    th:attr="id='id-'+ ${item.id}"
 >
+  <div class="col-md-4">
+    <div class="form-control">
+      <input
+          type="text"
+          hx-target="#de"
+          hx-trigger="keyup"
+          th:attr="
+            hx-post='/item/update/'+ ${item.id},
+            name='name-'+ ${item.id}
+          "
+          th:value="${item.name}"
+      />
+    </div>
+  </div>
+  <div class="col-md-4">
+    <input
+        th:value="${item.email}"
+        th:attr="
+          hx-post='/item/update/'+ ${item.id},
+          name='email-'+ ${item.id}
+        "
+        hx-trigger="keyup"
+        hx-target="#de"
+        type="text"
+    />
+  </div>
+  <div class="col-md-4">
+    <a
+        class="btn btn-danger"
+        th:attr="
+          hx-delete='/item/delete/'+ ${item.id}
+        "
+        th:trigger="deleting"
+        hx-indicator="#busyLoadingList"
+        hx-target="closest .sortable-list__item"
+        hx-swap="outerHTML"
+    >delete</a>
+  </div>
+
   <input
-      type="hidden"
-      name="item"
-      th:value="${item.id}"
+      th:value="${item.getId()}"
+      type='hidden'
+      name='item'
   />
-  <span th:text="${item.name}"></span>
-  <span th:text="${item.email}"></span>
+
 </div>

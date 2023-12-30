@@ -108,9 +108,19 @@ public class TemplateController {
     return "components/item/item";
   }
   @DeleteMapping("/item/delete/{id}")
-  public void deleteItem(HttpServletResponse response, @PathVariable int id) {
+  public String deleteItem(HttpServletResponse response, @PathVariable int id, Model model, @RequestBody String list) {
+
     listService.deleteListItem((long) id);
+    JSONObject jsonObject = (JSONObject) JSONValue.parse(list);
+    String newName = (String) jsonObject.get("name-"+id);
+    String newEmail = (String) jsonObject.get("email-"+id);
+    ListItem listItem = new ListItem();
+    listItem.setId((long) id);
+    listItem.setEmail(newEmail);
+    listItem.setName(newName);
+    model.addAttribute("item", listItem);
     response.setHeader("HX-Trigger", "item-removed-trigger");
+    return "components/item/item";
   }
   private JSONArray extractArray(String jsonKeyString, String jsonStr) {
     JSONObject jsonObject = (JSONObject) JSONValue.parse(jsonStr);

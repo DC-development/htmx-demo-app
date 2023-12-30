@@ -1,9 +1,13 @@
-@import "../templates/components/sortable-list/list";
-@import "../templates/components/sortable-list/sortable-list";
+
+
 @import "reset";
-@import "simple-grid";
-@import "component";
+@import "form";
+@import "button";
+@import "tiny-grid";
 @import "fx-lib";
+@import "typo";
+@import "../templates/components/sortable-list/sortable-list";
+
 
 .my-indicator {
   display: none;

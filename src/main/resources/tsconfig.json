@@ -5,10 +5,11 @@
     "allowJs": true,
     "sourceMap": false,
     "outFile": "built/main.js",
-    "outDir": "built"
+    "outDir": "built",
+    "baseUrl": "./",
+    "esModuleInterop": true
   },
   "include": [
     "./**/*.ts"
-
   ]
 }
