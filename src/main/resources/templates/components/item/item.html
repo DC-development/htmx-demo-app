@@ -2,7 +2,7 @@
     class="sortable-list__item row dropped"
     th:attr="id='id-'+ ${item.id}"
 >
-  <div class="col-md-4">
+  <div class="col-md-5">
     <div class="form-control">
       <input
           type="text"
@@ -16,7 +16,7 @@
       />
     </div>
   </div>
-  <div class="col-md-4">
+  <div class="col-md-5">
     <input
         th:value="${item.email}"
         th:attr="
@@ -28,7 +28,7 @@
         type="text"
     />
   </div>
-  <div class="col-md-4">
+  <div class="col-md-2">
     <a
         class="btn btn-danger"
         th:attr="

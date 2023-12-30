@@ -4,6 +4,7 @@
   <base href="http://localhost:8080">
   <title th:text="${title}"></title>
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="static/css/main.css"/>
   <!-- jsDelivr :: Sortable :: Latest (https://www.jsdelivr.com/package/npm/sortablejs) -->
   <script src="js/libs/htmx.min.js"></script>
@@ -16,43 +17,45 @@
 <body>
 <div class="container">
   <header class="row">
-    <div class="col-6">
+    <div class="col-md-6">
       <h1 th:text="${title}"></h1>
     </div>
-    <div class="col-6"><div id="de"></div></div>
+    <div class="col-md-6">
+      <div id="de"></div>
+    </div>
   </header>
   <div class="row">
     <div class="col-12">
-        <section th:replace="~{components/item/item-form}"></section>
+      <section th:replace="~{components/item/item-form}"></section>
     </div>
   </div>
-
-      <form
-          id="sortableListForm"
-          class="fx-relative col-12"
-          hx-ext='json-enc'
-          hx-post="/items"
-          hx-trigger="end"
-          hx-target="#listContainer"
-          hx-swap="innerHTML"
+  <div class="row">
+    <form
+        id="sortableListForm"
+        class="fx-relative col-12"
+        hx-ext='json-enc'
+        hx-post="/items"
+        hx-trigger="end"
+        hx-target="#listContainer"
+        hx-swap="innerHTML"
+    >
+      <div
+          id="listContainer"
+          class="sortable sortable-list"
       >
-        <div
-            id="listContainer"
-            class="sortable sortable-list"
-        >
-          <section th:replace="~{${template}}"></section>
-        </div>
-      </form>
-    </div>
-
-  <div
-      class="row"
-      hx-trigger="new-item-trigger from:body"
-      hx-get="/items"
-      hx-target=".sortable.sortable-list"
-      hx-swap="innerHTML"
-      hx-indicator="#busyLoadingList"
-  ></div>
+        <section th:replace="~{${template}}"></section>
+      </div>
+    </form>
+  </div>
+</div>
+<div
+    class="row"
+    hx-trigger="new-item-trigger from:body"
+    hx-get="/items"
+    hx-target=".sortable.sortable-list"
+    hx-swap="innerHTML"
+    hx-indicator="#busyLoadingList"
+></div>
 
 </div>
 

@@ -1,0 +1,13 @@
+<div
+    class="form-control"
+    th:classappend="${modifier} ? 'form-control--stacked' : ''"
+    th:fragment="formField (field, value, size, modifier, target)"
+>
+    <input
+        type="text"
+        th:name="${#strings.toLowerCase(field)}"
+        th:value="${value}"
+        th:size="${size}"
+        th:target="${target}"
+    />
+</div>

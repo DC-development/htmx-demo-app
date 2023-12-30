@@ -5,5 +5,12 @@ input {
   box-sizing: border-box;
 }
 .form-control {
-
+  &--stacked {
+    margin-bottom: 0.5rem;
+  }
+}
+@media only screen and (max-width: 899.9px) {
+  .form-control {
+    margin-bottom: 0.5rem;
+  }
 }

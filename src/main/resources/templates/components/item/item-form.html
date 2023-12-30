@@ -5,24 +5,41 @@
     th:trigger="end"
     hx-indicator="#busySaving, #busyLoadingList"
     hx-swap="outerHTML"
+    class="fx-relative"
 >
 <div id="busySaving" class="my-indicator busy-default">
   <div class="busy-backdrop">
     <img src="img/spinner.gif"/>
   </div>
 </div>
-    <input
-        name="name"
-        type="text"
-        required
-    />
-    <input
-        name="email"
-        type="email"
-        required
-    />
+
+  <div
+      th:replace="~{components/form/input.html ::
+      formField(
+        field='name',
+        value='',
+        size='',
+        modifier='--stacked',
+        target=''
+       )}"
+  ></div>
+  <div
+      th:replace="~{components/form/input.html ::
+      formField(
+        field='email',
+        value='',
+        size='',
+        modifier='--stacked',
+        target=''
+       )}"
+  ></div>
+  <div class="form-control form-control--stacked">
     <button
+        class="btn btn-secondary"
         type="submit"
-    >Send</button>
+    >
+      Send
+    </button>
+  </div>
 
 </form>

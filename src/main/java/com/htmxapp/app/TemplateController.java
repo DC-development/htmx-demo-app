@@ -82,7 +82,7 @@ public class TemplateController {
   }
   @PostMapping("/item/new")
   public String createItem(Model model,@RequestBody ListItem item, HttpServletResponse response) {
-    listService.createListItem(item);
+    ListItem newItem = listService.createListItem(item);
     model.addAttribute("item", item);
     response.setHeader("HX-Trigger", "new-item-trigger");
     /* try {
