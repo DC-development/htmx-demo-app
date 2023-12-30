@@ -5,6 +5,8 @@ import net.minidev.json.JSONArray;
 import net.minidev.json.JSONObject;
 import net.minidev.json.JSONValue;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -82,8 +84,8 @@ public class TemplateController {
   }
   @PostMapping("/item/new")
   public String createItem(Model model,@RequestBody ListItem item, HttpServletResponse response) {
-    ListItem newItem = listService.createListItem(item);
     model.addAttribute("item", item);
+    listService.createListItem(item);
     response.setHeader("HX-Trigger", "new-item-trigger");
     /* try {
       Thread.sleep(1000);
@@ -93,7 +95,7 @@ public class TemplateController {
     return "/components/item/item-form";
   }
   @PostMapping("/item/update/{id}")
-  public String updateItem(Model model, @RequestBody String list, @PathVariable int id) {
+  public ResponseEntity<Void> updateItem(Model model, @RequestBody String list, @PathVariable int id) {
     JSONObject jsonObject = (JSONObject) JSONValue.parse(list);
     String newName = (String) jsonObject.get("name-"+id);
     String newEmail = (String) jsonObject.get("email-"+id);
@@ -105,7 +107,7 @@ public class TemplateController {
 
     updateItem.setId((long) id);
     model.addAttribute("item", updateItem);
-    return "components/item/item";
+    return new ResponseEntity<>(HttpStatus.OK);
   }
   @DeleteMapping("/item/delete/{id}")
   public String deleteItem(HttpServletResponse response, @PathVariable int id, Model model, @RequestBody String list) {

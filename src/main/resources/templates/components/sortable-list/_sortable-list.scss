@@ -10,8 +10,7 @@
     background-color: #ffffff;
     left: 0;
     &.dropped {
-      position: relative;
-      width: 100%;
+
       animation: slideOut 500ms linear forwards;
     }
     &--ghost {
@@ -30,8 +29,8 @@
   }
   70% {
     transform: translate(-110%);
-    padding-top: 15px;
-    padding-bottom: 15px;
+    padding-top: 16px;
+    padding-bottom: 16px;
     height: initial;
   }
   100% {
