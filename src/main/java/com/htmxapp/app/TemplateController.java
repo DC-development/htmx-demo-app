@@ -42,44 +42,25 @@ public class TemplateController {
   private String getItems(Model model) {
     List<ListItem> arrayOfItems = this.listService.getAllListItems();
     model.addAttribute("items", arrayOfItems);
-    model.addAttribute("items", arrayOfItems);
-    /* try {
-      Thread.sleep(1000);
-    } catch (InterruptedException e) {
-      e.printStackTrace();
-    }*/
     return "/components/sortable-list/sortable-list";
   }
   @PostMapping("/items")
   private String postItems(Model model, @RequestBody String list) {
-    // ExtractArray from json input
+
     JSONArray arrayOfIds = this.extractArray("item", list);
-    // Iterate JsonArray
+
     for(int i = 0; i < arrayOfIds.size(); i++) {
-      // Pull item from database
       Optional<ListItem> fetchedItem = this.listService.getListItemById(Long.valueOf((String) arrayOfIds.get(i)));
-      // Create update object
       ListItem updatedItem = new ListItem();
-      // set ordinary to index or array to ge sorted by
       updatedItem.setOrdinary(i);
-      // map existing and not updated values to update object
       updatedItem.setName(fetchedItem.get().getName());
       updatedItem.setId(fetchedItem.get().getId());
       updatedItem.setEmail(fetchedItem.get().getEmail());
-      // Persist Updated Item
-
       this.listService.updateListItem(fetchedItem.get().getId(), updatedItem);
-
     }
-    // Get new List from DB
     List<ListItem> arrayOfItems = this.listService.getAllListItems();
-    // Add List to Template model
     model.addAttribute("items", arrayOfItems);
-   /* try {
-      Thread.sleep(1000);
-    } catch (InterruptedException e) {
-      e.printStackTrace();
-    }*/
+
     return "/components/sortable-list/sortable-list";
   }
   @PostMapping("/item/new")
@@ -87,11 +68,7 @@ public class TemplateController {
     model.addAttribute("item", item);
     listService.createListItem(item);
     response.setHeader("HX-Trigger", "new-item-trigger");
-    /* try {
-      Thread.sleep(1000);
-    } catch (InterruptedException e) {
-      e.printStackTrace();
-    }*/
+
     return "/components/item/item-form";
   }
   @PostMapping("/item/update/{id}")
