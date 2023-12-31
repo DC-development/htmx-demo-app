@@ -34,7 +34,7 @@
         id="sortableListForm"
         class="fx-relative col-12"
         hx-ext='json-enc'
-        hx-post="/items"
+        hx-post="/items/reorder"
         hx-trigger="end"
         hx-target="#listContainer"
         hx-swap="innerHTML"
@@ -48,17 +48,5 @@
     </form>
   </div>
 </div>
-<div
-    class="row"
-    hx-trigger="new-item-trigger from:body"
-    hx-get="/items"
-    hx-target=".sortable.sortable-list"
-    hx-swap="innerHTML"
-    hx-indicator="#busyLoadingList"
-></div>
-
-</div>
-
-
 </body>
 </html>

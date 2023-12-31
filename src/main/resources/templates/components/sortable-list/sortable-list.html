@@ -62,3 +62,10 @@
     hx-swap="innerHTML swap:500ms"
     hx-indicator="#busyLoadingList"
 ></div>
+<div
+    hx-trigger="new-item-trigger from:body"
+    hx-get="/items"
+    hx-target=".sortable.sortable-list"
+    hx-swap="innerHTML"
+    hx-indicator="#busyLoadingList"
+></div>
