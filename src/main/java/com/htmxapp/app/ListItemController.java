@@ -46,9 +46,12 @@ public class ListItemController {
   }
   @PutMapping("/item/new")
   public String createItem(Model model,@RequestBody ListItem item, HttpServletResponse response) {
-    model.addAttribute("item", item);
+    ListItem highestOrderItem = this.listService.getAllListItems().getLast();
+    item.setOrdinary(highestOrderItem.getOrdinary()+1);
     listService.createListItem(item);
     response.setHeader("HX-Trigger", "new-item-trigger");
+
+    model.addAttribute("item", item);
 
     return "/components/item/item-form";
   }
