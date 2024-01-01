@@ -41,5 +41,9 @@
       Send
     </button>
   </div>
-
+<div id="newListItemHtml" class="" hx-trigger="swap">
+  <div th:if="${item}">
+    <div th:replace="~{components/item/item.html :: item(dropped=false, item=${item}, isClone=true)}"></div>
+  </div>
+</div>
 </form>

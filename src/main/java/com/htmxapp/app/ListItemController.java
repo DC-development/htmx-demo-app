@@ -48,10 +48,10 @@ public class ListItemController {
   public String createItem(Model model,@RequestBody ListItem item, HttpServletResponse response) {
     ListItem highestOrderItem = this.listService.getAllListItems().getLast();
     item.setOrdinary(highestOrderItem.getOrdinary()+1);
-    listService.createListItem(item);
+    ListItem newItem = listService.createListItem(item);
     response.setHeader("HX-Trigger", "new-item-trigger");
 
-    model.addAttribute("item", item);
+    model.addAttribute("item", newItem);
 
     return "/components/item/item-form";
   }
@@ -82,6 +82,8 @@ public class ListItemController {
     listItem.setEmail(newEmail);
     listItem.setName(newName);
     model.addAttribute("item", listItem);
+    model.addAttribute("dropped", true);
+    model.addAttribute("isClone", false);
     response.setHeader("HX-Trigger", "item-removed-trigger");
     return "components/item/item";
   }

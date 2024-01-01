@@ -1,18 +1,20 @@
 <div
-    class="sortable-list__item row dropped"
+    th:fragment="item (dropped, item, isClone)"
     th:attr="id='id-'+ ${item.id}"
+    th:classappend="${dropped} ? 'dropped' : ''"
+    class="sortable-list__item row"
 >
   <div class="col-md-5">
     <div class="form-control">
       <input
-          type="text"
-          hx-target="#de"
-          hx-trigger="keyup"
           th:attr="
             hx-post='/item/update/'+ ${item.id},
             name='name-'+ ${item.id}
           "
           th:value="${item.name}"
+          hx-swap="none"
+          hx-trigger="keyup delay:350ms"
+          type="text"
       />
     </div>
   </div>
@@ -20,20 +22,19 @@
     <input
         th:value="${item.email}"
         th:attr="
-          hx-post='/item/update/'+ ${item.id},
-          name='email-'+ ${item.id}
-        "
-        hx-trigger="keyup"
-        hx-target="#de"
+            hx-post='/item/update/'+ ${item.id},
+            name='email-'+ ${item.id}
+          "
+        hx-trigger="keyup delay:350ms"
+        hx-swap="none"
         type="text"
     />
   </div>
   <div class="col-md-2">
     <a
         class="btn btn-danger"
-        th:attr="
-          hx-delete='/item/delete/'+ ${item.id}
-        "
+        th:if="${!isClone}"
+        th:attr="hx-delete='/item/delete/'+ ${item.id}"
         th:trigger="deleting"
         hx-indicator="#busyLoadingList"
         hx-target="closest .sortable-list__item"
