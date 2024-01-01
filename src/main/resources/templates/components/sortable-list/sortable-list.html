@@ -1,54 +1,10 @@
 
-<div
-    class="sortable-list__item row"
+<th:block
     th:attr="id='id-'+ ${item.id}"
     th:each="item: ${items}"
 >
-  <div class="col-md-5">
-    <div class="form-control">
-      <input
-          th:attr="
-            hx-post='/item/update/'+ ${item.id},
-            name='name-'+ ${item.id}
-          "
-          th:value="${item.name}"
-          hx-swap="none"
-          hx-trigger="keyup delay:350ms"
-          type="text"
-      />
-    </div>
-  </div>
-  <div class="col-md-5">
-    <div class="form-control">
-      <input
-          th:value="${item.email}"
-          th:attr="
-            hx-post='/item/update/'+ ${item.id},
-            name='email-'+ ${item.id}
-          "
-          hx-trigger="keyup delay:350ms"
-          hx-swap="none"
-          type="text"
-      />
-    </div>
-  </div>
-  <div class="col-md-2">
-    <a
-        class="btn btn-danger"
-        th:attr="hx-delete='/item/delete/'+ ${item.id}"
-        th:trigger="deleting"
-        hx-indicator="#busyLoadingList"
-        hx-target="closest .sortable-list__item"
-        hx-swap="outerHTML"
-    >delete</a>
-  </div>
-
-  <input
-      th:value="${item.getId()}"
-      type='hidden'
-      name='item'
-  />
-</div>
+  <div th:replace="~{components/item/item.html :: item(dropped=false, item=${item}, isClone=false)}"></div>
+</th:block>
 
 <div id="busyLoadingList" class="my-indicator busy-default">
   <div class="busy-backdrop">
