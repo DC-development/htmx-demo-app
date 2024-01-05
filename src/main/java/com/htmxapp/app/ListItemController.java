@@ -30,15 +30,18 @@ public class ListItemController {
 
     JSONArray arrayOfIds = this.extractArray("item", list);
 
-    for(int i = 0; i < arrayOfIds.size(); i++) {
-      Optional<ListItem> fetchedItem = this.listService.getListItemById(Long.valueOf((String) arrayOfIds.get(i)));
-      ListItem updatedItem = new ListItem();
-      updatedItem.setOrdinary(i);
-      updatedItem.setName(fetchedItem.get().getName());
-      updatedItem.setId(fetchedItem.get().getId());
-      updatedItem.setEmail(fetchedItem.get().getEmail());
-      this.listService.updateListItem(fetchedItem.get().getId(), updatedItem);
+    if(arrayOfIds != null) {
+      for(int i = 0; i < arrayOfIds.size(); i++) {
+        Optional<ListItem> fetchedItem = this.listService.getListItemById(Long.valueOf((String) arrayOfIds.get(i)));
+        ListItem updatedItem = new ListItem();
+        updatedItem.setOrdinary(i);
+        updatedItem.setName(fetchedItem.get().getName());
+        updatedItem.setId(fetchedItem.get().getId());
+        updatedItem.setEmail(fetchedItem.get().getEmail());
+        this.listService.updateListItem(fetchedItem.get().getId(), updatedItem);
+      }
     }
+
     List<ListItem> arrayOfItems = this.listService.getAllListItems();
     model.addAttribute("items", arrayOfItems);
 
