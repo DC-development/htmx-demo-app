@@ -3,6 +3,7 @@ htmx.onLoad(function (content) {
     for (var i = 0; i < sortables.length; i++) {
         var sortable = sortables[i];
         var sortableInstance = new Sortable(sortable, {
+            handle: '.handle',
             animation: 150,
             ghostClass: 'sortable-list__item--ghost',
 

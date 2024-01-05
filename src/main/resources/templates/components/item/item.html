@@ -19,29 +19,33 @@
     </div>
   </div>
   <div class="col-md-5">
-    <input
-        th:value="${item.email}"
-        th:attr="
-            hx-post='/item/update/'+ ${item.id},
-            name='email-'+ ${item.id}
-          "
-        hx-trigger="keyup delay:350ms"
-        hx-swap="none"
-        type="text"
-    />
+    <div class="form-control">
+      <input
+          th:value="${item.email}"
+          th:attr="
+              hx-post='/item/update/'+ ${item.id},
+              name='email-'+ ${item.id}
+            "
+          hx-trigger="keyup delay:350ms"
+          hx-swap="none"
+          type="text"
+      />
+    </div>
   </div>
-  <div class="col-md-2">
+  <div class="col-md-1">
     <a
-        class="btn btn-danger"
+        class="fa fa-times btn btn-danger"
         th:if="${!isClone}"
         th:attr="hx-delete='/item/delete/'+ ${item.id}"
         th:trigger="deleting"
         hx-indicator="#busyLoadingList"
         hx-target="closest .sortable-list__item"
         hx-swap="outerHTML"
-    >delete</a>
+    ></a>
   </div>
-
+  <div class="col-md-1">
+    <a class="fa fa-directions btn btn-secondary handle"></a>
+  </div>
   <input
       th:value="${item.getId()}"
       type='hidden'
