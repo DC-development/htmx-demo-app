@@ -52,18 +52,19 @@ public class ListItemController {
     response.setHeader("HX-Trigger", "new-item-trigger");
 
     model.addAttribute("item", newItem);
-
-    return "/components/item/item-form";
+    model.addAttribute("isClone", false);
+    return "/components/item/item";
   }
   @PostMapping("/item/update/{id}")
   public ResponseEntity<Void> updateItem(Model model, @RequestBody String list, @PathVariable int id) {
     JSONObject jsonObject = (JSONObject) JSONValue.parse(list);
     String newName = (String) jsonObject.get("name-"+id);
     String newEmail = (String) jsonObject.get("email-"+id);
-
+    Optional<ListItem> oldItem = this.listService.getListItemById((long) id);
     ListItem updateItem = new ListItem();
     updateItem.setName(newName);
     updateItem.setEmail(newEmail);
+    updateItem.setOrdinary(oldItem.get().getOrdinary());
     this.listService.updateListItem((long) id, updateItem);
 
     updateItem.setId((long) id);
@@ -83,7 +84,7 @@ public class ListItemController {
     listItem.setName(newName);
     model.addAttribute("item", listItem);
     model.addAttribute("dropped", true);
-    model.addAttribute("isClone", false);
+    model.addAttribute("isClone", false);// TODO: have default fragment-values
     response.setHeader("HX-Trigger", "item-removed-trigger");
     return "components/item/item";
   }

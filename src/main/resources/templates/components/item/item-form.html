@@ -2,9 +2,9 @@
     id="itemForm"
     hx-put="/item/new"
     hx-ext='json-enc'
-    th:trigger="end"
     hx-indicator="#busySaving, #busyLoadingList"
-    hx-swap="outerHTML"
+    hx-swap="beforeend"
+    hx-target="#listContainer"
     class="fx-relative"
 >
 <div id="busySaving" class="my-indicator busy-default">
