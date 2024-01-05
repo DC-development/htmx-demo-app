@@ -45,8 +45,14 @@ public class ListItemController {
     return "/components/sortable-list/sortable-list";
   }
   @PutMapping("/item/new")
-  public String createItem(Model model,@RequestBody ListItem item, HttpServletResponse response) {
-    ListItem highestOrderItem = this.listService.getAllListItems().getLast();
+  public String createItem(
+      Model model,
+      @RequestBody ListItem item,
+      HttpServletResponse response
+  ) {
+    List<ListItem> allItems = this.listService.getAllListItems();
+    ListItem highestOrderItem = !this.listService.getAllListItems().isEmpty() ? this.listService.getAllListItems().getLast() : new ListItem();
+
     item.setOrdinary(highestOrderItem.getOrdinary()+1);
     ListItem newItem = listService.createListItem(item);
     response.setHeader("HX-Trigger", "new-item-trigger");
@@ -56,7 +62,11 @@ public class ListItemController {
     return "/components/item/item";
   }
   @PostMapping("/item/update/{id}")
-  public ResponseEntity<Void> updateItem(Model model, @RequestBody String list, @PathVariable int id) {
+  public ResponseEntity<Void> updateItem(
+      Model model,
+      @RequestBody String list,
+      @PathVariable int id
+  ) {
     JSONObject jsonObject = (JSONObject) JSONValue.parse(list);
     String newName = (String) jsonObject.get("name-"+id);
     String newEmail = (String) jsonObject.get("email-"+id);
@@ -72,8 +82,12 @@ public class ListItemController {
     return new ResponseEntity<>(HttpStatus.OK);
   }
   @DeleteMapping("/item/delete/{id}")
-  public String deleteItem(HttpServletResponse response, @PathVariable int id, Model model, @RequestBody String list) {
-
+  public String deleteItem(
+      HttpServletResponse response,
+      @PathVariable int id,
+      Model model,
+      @RequestBody String list
+  ) {
     listService.deleteListItem((long) id);
     JSONObject jsonObject = (JSONObject) JSONValue.parse(list);
     String newName = (String) jsonObject.get("name-"+id);
