@@ -12,7 +12,7 @@
         th:attr="id='id-'+ ${item.id}"
         th:each="item: ${items}"
     >
-      <div th:replace="~{components/item/item.html :: item(dropped=false, item=${item}, isClone=false)}"></div>
+      <th:block th:replace="~{components/item/item.html :: item(dropped=false, item=${item}, isClone=false)}"></th:block>
     </th:block>
   </div>
   <div id="busyLoadingList" class="my-indicator busy-default">
