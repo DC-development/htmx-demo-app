@@ -1,27 +1,36 @@
-
-<th:block
-    th:attr="id='id-'+ ${item.id}"
-    th:each="item: ${items}"
->
-  <div th:replace="~{components/item/item.html :: item(dropped=false, item=${item}, isClone=false)}"></div>
-</th:block>
-
-<div id="busyLoadingList" class="my-indicator busy-default">
-  <div class="busy-backdrop">
-    <img width="70" src="img/spinner.gif"/>
-  </div>
-</div>
-<div
-    hx-trigger="item-removed-trigger from:body"
-    hx-get="/items"
-    hx-target=".sortable.sortable-list"
-    hx-swap="innerHTML swap:500ms"
-    hx-indicator="#busyLoadingList"
-></div>
-<!--<div
-    hx-trigger="new-item-trigger from:body"
-    hx-get="/items"
-    hx-target=".sortable.sortable-list"
+<form
+    id="sortableListForm"
+    class="fx-relative"
+    hx-ext='json-enc'
+    hx-post="/items/reorder"
+    hx-trigger="end"
+    hx-target="#listContainer"
     hx-swap="innerHTML"
-    hx-indicator="#busyLoadingList"
-></div>-->
+>
+  <div id="listContainer" class="sortable sortable-list">
+    <th:block
+        th:attr="id='id-'+ ${item.id}"
+        th:each="item: ${items}"
+    >
+      <div th:replace="~{components/item/item.html :: item(dropped=false, item=${item}, isClone=false)}"></div>
+    </th:block>
+  </div>
+  <div id="busyLoadingList" class="my-indicator busy-default">
+    <div class="busy-backdrop">
+      <img width="70" src="img/spinner.gif"/>
+    </div>
+  </div>
+  <div
+      hx-trigger="item-removed-trigger from:body"
+      hx-get="/items"
+      hx-target=".sortable.sortable-list"
+      hx-swap="innerHTML swap:500ms"
+      hx-indicator="#busyLoadingList"
+  ></div>
+  <!--<div
+      hx-trigger="new-item-trigger from:body"
+      hx-get="/items"
+      hx-target=".sortable.sortable-list"
+      hx-swap="innerHTML"
+      hx-indicator="#busyLoadingList"
+  ></div>-->

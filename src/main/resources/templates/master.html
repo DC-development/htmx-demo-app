@@ -30,21 +30,9 @@
     </div>
   </div>
   <div class="row">
-    <form
-        id="sortableListForm"
-        class="fx-relative col-12"
-        hx-ext='json-enc'
-        hx-post="/items/reorder"
-        hx-trigger="end"
-        hx-target="#listContainer"
-        hx-swap="innerHTML"
-    >
-      <div
-          id="listContainer"
-          class="sortable sortable-list"
-      >
-        <section th:replace="~{${template}}"></section>
-      </div>
+    <div class="col-12">
+      <section th:replace="~{${template}}"></section>
+    </div>
     </form>
   </div>
 </div>
