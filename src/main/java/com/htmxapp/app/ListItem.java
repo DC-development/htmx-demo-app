@@ -11,7 +11,7 @@ public class ListItem {
 
   private String name;
   private String email;
-  private int ordinary;
+  private int ordinary = -1;
 
   // Constructors, Getters, and Setters
   public Long getId() {

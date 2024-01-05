@@ -53,7 +53,7 @@ public class ListItemController {
       @RequestBody ListItem item,
       HttpServletResponse response
   ) {
-    List<ListItem> allItems = this.listService.getAllListItems();
+
     ListItem highestOrderItem = !this.listService.getAllListItems().isEmpty() ? this.listService.getAllListItems().getLast() : new ListItem();
 
     item.setOrdinary(highestOrderItem.getOrdinary()+1);
