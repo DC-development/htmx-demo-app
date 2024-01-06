@@ -12,6 +12,9 @@ htmx.onLoad(function (content) {
             onMove: function (evt) {
                 return evt.related.className.indexOf('htmx-indicator') === -1;
             },
+            onDrop: function (drop) {
+                console.log('blah')
+            },
 
             // Disable sorting on the `end` event
             onEnd: function (evt) {

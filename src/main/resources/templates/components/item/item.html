@@ -37,7 +37,6 @@
         class="fa fa-times btn btn-danger"
         th:if="${!isClone}"
         th:attr="hx-delete='/item/delete/'+ ${item.id}"
-        th:trigger="deleting"
         hx-indicator="#busyLoadingList"
         hx-target="closest .sortable-list__item"
         hx-swap="outerHTML"
