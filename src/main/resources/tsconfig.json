@@ -1,11 +1,11 @@
 {
   "compilerOptions": {
     "target": "ES2015",
-    "module": "amd",
+    "module": "AMD",
     "allowJs": true,
     "sourceMap": false,
-    "outFile": "built/main.js",
     "outDir": "built",
+    "outFile": "built/main.js",
     "baseUrl": "./",
     "esModuleInterop": true
   },
