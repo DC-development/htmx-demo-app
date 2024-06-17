@@ -18,7 +18,7 @@ define("main", ["require", "exports", "templates/other", "templates/components/f
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     const main = () => {
-        const helloString = (0, other_1.other)('Philgggfou!');
+        const helloString = (0, other_1.other)('Philggfou!');
         console.log(helloString);
         (0, input_component_1.InputComponent)();
     };
