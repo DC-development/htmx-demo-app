@@ -1,1 +1,1 @@
-export const InputComponent = () => console.log('some function called')
+export const InputComponent = (a: string) => console.log('some function called', a)
