@@ -1,1 +1,0 @@
-export const anotherTest = () => console.log('hhuhu! anotherTest')
