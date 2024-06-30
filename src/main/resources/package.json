@@ -1,0 +1,15 @@
+{
+  "name": "htmx-script-support",
+  "version": "1.0.0",
+  "description": "utils to generate boilercode",
+  "main": "main.ts",
+  "type": "module",
+  "scripts": {
+    "addComponent": "node bin/addComponent.js",
+    "newComp": "node bin/newComponent.js"
+  },
+  "author": "me",
+  "license": "ISC",
+  "dependencies": {
+  }
+}
