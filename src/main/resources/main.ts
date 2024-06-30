@@ -6,10 +6,8 @@ const main = () => {
     const helloString: string = other('Philgfou');
     console.log(helloString);
     InputComponent('phil!')
-    // @ts-ignore
-    htmx.onLoad(function (content) {
-        SortableList(".sortable");
-    })
+    SortableList(".sortable");
+
 }
 
 
