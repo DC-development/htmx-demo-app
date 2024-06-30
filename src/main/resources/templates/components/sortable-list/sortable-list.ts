@@ -8,15 +8,15 @@ export function SortableList(selector: string, content) {
             handle: '.handle',
             animation: 150,
             ghostClass: 'sortable-list__item--ghost',
-
             // Make the `.htmx-indicator` unsortable
             filter: ".htmx-indicator",
+
             onMove: function (evt) {
-                console.log("moved")
+                console.log("moving", evt.dragged.id, evt.related.id)
                 return evt.related.className.indexOf('htmx-indicator') === -1;
             },
             onDrop: function (drop) {
-                console.log('blah')
+                console.log('dropped')
             },
             // Disable sorting on the `end` event
             onEnd: function (evt) {
