@@ -6,12 +6,12 @@ import {SortableList} from "./templates/components/sortable-list/sortable-list";
 const htmx = window.htmx
 
 htmx.onLoad((content) => {
-    // console.log('onload triggered')
+    console.log('onload triggered', content)
 })
 
 const main = () => {
     const helloString: string = other('Philgfou!');
-    InputComponent('phil!')
+    InputComponent(helloString)
     SortableList(".sortable", null)
 }
 

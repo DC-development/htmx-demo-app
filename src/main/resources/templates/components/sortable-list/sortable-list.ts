@@ -20,7 +20,7 @@ export function SortableList(selector: string, content) {
             },
             // Disable sorting on the `end` event
             onEnd: function (evt) {
-                console.log("ended")
+                console.log("ended", evt.item.id)
                 this.option("disabled", false);
             }
         });
