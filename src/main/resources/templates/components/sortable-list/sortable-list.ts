@@ -1,5 +1,5 @@
 
-export function SortableList(selector: string, content) {
+export function SortableList(selector: string) {
     var sortables = document.querySelectorAll(selector);
     for (var i = 0; i < sortables.length; i++) {
         var sortable = sortables[i];
@@ -15,9 +15,6 @@ export function SortableList(selector: string, content) {
                 console.log("moving", evt.dragged.id, evt.related.id)
                 return evt.related.className.indexOf('htmx-indicator') === -1;
             },
-            onDrop: function (drop) {
-                console.log('dropped')
-            },
             // Disable sorting on the `end` event
             onEnd: function (evt) {
                 console.log("ended", evt.item.id)
@@ -27,6 +24,7 @@ export function SortableList(selector: string, content) {
 
         // Re-enable sorting on the `htmx:afterSwap` event
         sortable.addEventListener("htmx:afterSwap", function () {
+            console.log('this works')
             sortableInstance.option("disabled", false);
         });
     }
