@@ -36,3 +36,4 @@ src/main/resources/static/css
 src/main/resources/scss/webfonts
 src/main/resources/static/js/built
 src/main/resources/built
+src/main/resources/built/main.js
