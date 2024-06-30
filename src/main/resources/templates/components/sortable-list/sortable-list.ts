@@ -1,6 +1,5 @@
 
-export function SortableList(selector: string) {
-    console.log("loaded sl-scripts")
+export function SortableList(selector: string, content) {
     var sortables = document.querySelectorAll(selector);
     for (var i = 0; i < sortables.length; i++) {
         var sortable = sortables[i];
@@ -13,14 +12,15 @@ export function SortableList(selector: string) {
             // Make the `.htmx-indicator` unsortable
             filter: ".htmx-indicator",
             onMove: function (evt) {
+                console.log("moved")
                 return evt.related.className.indexOf('htmx-indicator') === -1;
             },
             onDrop: function (drop) {
                 console.log('blah')
             },
-
             // Disable sorting on the `end` event
             onEnd: function (evt) {
+                console.log("ended")
                 this.option("disabled", false);
             }
         });
@@ -30,4 +30,5 @@ export function SortableList(selector: string) {
             sortableInstance.option("disabled", false);
         });
     }
+
 }
