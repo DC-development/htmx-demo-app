@@ -10,7 +10,7 @@ htmx.onLoad((content) => {
 })
 
 const main = () => {
-    const helloString: string = other('Philgfou!');
+    const helloString: string = other('Phil');
     InputComponent(helloString)
     SortableList(".sortable")
 }
