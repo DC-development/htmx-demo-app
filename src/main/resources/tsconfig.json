@@ -5,7 +5,6 @@
     "allowJs": true,
     "sourceMap": false,
     "outDir": "built",
-    "outFile": "built/main.js",
     "baseUrl": "./",
     "esModuleInterop": true,
     "paths": {

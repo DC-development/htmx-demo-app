@@ -1,3 +1,4 @@
+import Sortable from "static/js/libs/Sortable.min.js";
 
 export const  SortableList = (selector: string) => {
     var sortables = document.querySelectorAll(selector);
