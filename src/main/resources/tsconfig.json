@@ -54,6 +54,9 @@
       ],
       "parse5": [
         "./node_modules/parse5/dist/index.js"
+      ],
+      "sortablejs/*": [
+        "./node_modules/sortablejs/*"
       ]
     }
   },
@@ -61,6 +64,10 @@
     "./**/*.ts"
   ],
   "exclude": [
-    "./templates/**/*.test.ts"
+    "./templates/**/*.test.ts",
+    "./**/*.test.ts",
+    "./**/*.spec.ts",
+    "./**/*.config.ts",
+    "./setup-jest.ts",
   ]
 }
