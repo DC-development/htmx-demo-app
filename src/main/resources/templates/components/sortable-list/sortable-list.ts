@@ -1,5 +1,5 @@
 
-export function SortableList(selector: string) {
+export const  SortableList = (selector: string) => {
     var sortables = document.querySelectorAll(selector);
     for (var i = 0; i < sortables.length; i++) {
         var sortable = sortables[i];
@@ -29,4 +29,5 @@ export function SortableList(selector: string) {
         });
     }
 
+    return sortables
 }

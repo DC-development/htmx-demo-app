@@ -2,14 +2,43 @@
   "name": "htmx-script-support",
   "version": "1.0.0",
   "description": "utils to generate boilercode",
-  "main": "main.ts",
+  "main": "index.ts",
   "type": "module",
   "scripts": {
     "addComponent": "node bin/addComponent.js",
-    "newComp": "node bin/newComponent.js"
+    "newComp": "node bin/newComponent.js",
+    "test": "jest --env=jsdom",
+    "build": "tsc --build"
   },
   "author": "me",
   "license": "ISC",
+  "devDependencies": {
+    "@babel/core": "^7.24.7",
+    "@babel/preset-env": "^7.24.7",
+    "@babel/preset-typescript": "^7.24.7",
+    "@jest/globals": "^29.7.0",
+    "@types/jest": "^29.5.12",
+    "babel-jest": "^29.7.0",
+    "ts-jest": "^29.1.5"
+  },
   "dependencies": {
+    "@babel/parser": "^7.24.7",
+    "@babel/types": "^7.24.7",
+    "jest-environment-jsdom": "^29.7.0",
+    "jest-preset-angular": "^14.1.1",
+    "jsdom": "^24.1.0",
+    "ts-node": "^10.9.2",
+    "undici-types": "^6.19.2"
+  },
+  "jest": {
+    "preset": "jest-preset-angular",
+    "setupFilesAfterEnv": ["<rootDir>/setup-jest.ts"],
+    "transformIgnorePatterns": [ ],
+    "globals": {
+
+    },
+    "maxWorkers": 4,
+    "moduleDirectories": ["node_modules", "<rootDir>/templates"],
+    "testEnvironment": "node"
   }
 }

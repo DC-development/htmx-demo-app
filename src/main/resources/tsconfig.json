@@ -7,9 +7,60 @@
     "outDir": "built",
     "outFile": "built/main.js",
     "baseUrl": "./",
-    "esModuleInterop": true
+    "esModuleInterop": true,
+    "paths": {
+      "node_modules/*": ["./node_modules/*"],
+      "undici-types": [
+        "./node_modules/undici-types/index.d.ts"
+      ],
+      "@babel/types": [
+        "./node_modules/@babel/types/lib/index.d.ts"
+      ],
+      "@babel/parser": [
+        "./node_modules/@babel/parser/index.cjs"
+      ],
+      "@jest/globals": [
+        "./node_modules/@jest/globals/build/index.d.ts"
+      ],
+      "jest": [
+        "./node_modules/jest/build/index.js"
+      ],
+      "@jest/environment": [
+        "./node_modules/@jest/environment/build/index.js"
+      ],
+      "@jest/expect": [
+        "./node_modules/@jest/expect/build/index.js"
+      ],
+      "@jest/types": [
+        "./node_modules/@jest/types/build/index.d.ts"
+      ],
+      "@jest/schemas": [
+        "./node_modules/@jest/schemas/build/index.js"
+      ],
+      "@types/jest": [
+        "./node_modules/@types/jest/index.d.ts"
+      ],
+      "expect": [
+        "./node_modules/expect/build/index.js"
+      ],
+      "pretty-format": [
+        "./node_modules/pretty-format/build/index.js"
+      ],
+      "jest-mock": [
+        "./node_modules/jest-mock/build/index.js"
+      ],
+      "chalk": [
+        "./node_modules/chalk/index.js"
+      ],
+      "parse5": [
+        "./node_modules/parse5/dist/index.js"
+      ]
+    }
   },
   "include": [
     "./**/*.ts"
+  ],
+  "exclude": [
+    "./templates/**/*.test.ts"
   ]
 }
